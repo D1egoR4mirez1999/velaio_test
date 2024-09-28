@@ -1,0 +1,103 @@
+:host {
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+form {
+  height: 100%;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+  overflow: auto;
+
+  @media only screen and (min-width: 1024px) {
+    width: 800px;
+  }
+
+  .task-container,
+  .people-container {
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 768px) {
+      display: flex;
+      flex-direction: row;
+
+      .form-field {
+        flex: 1;
+
+        &:first-child {
+          margin-right: 8px;
+        }
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+
+  .people-container {
+    display: flex;
+    flex-direction: column;
+
+    .people-fields {
+      display: flex;
+      flex-direction: column;
+
+      @media only screen and (min-width: 768px) {
+        flex-direction: row;
+      }
+    }
+
+    .skill-container {
+      .skill-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+          min-width: 40%;
+        }
+      }
+
+      .skill-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+
+        input {
+          flex: 1;
+          margin-right: 16px;
+        }
+
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  .button-save-task-container {
+    background-color: var(--white);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+
+    @media only screen and (min-width: 1024px) {
+      position: relative;
+      padding: 0px;
+      margin-top: 16px;
+    }
+
+    .button-save-task {
+      width: 100%;
+    }
+  }
+}
