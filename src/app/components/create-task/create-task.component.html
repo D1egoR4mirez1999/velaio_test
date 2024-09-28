@@ -96,7 +96,7 @@
       class="skill-container">
       <div class="skill-header">
         <h4>Skills</h4>
-        <button type="button" (click)="addPersonSkill()">Add</button>
+        <button appButton type="button" (click)="addPersonSkill()">Add</button>
       </div>
 
       <div 
@@ -120,13 +120,14 @@
             </ng-container>
           </div>
           
-          <button type="button" (click)="removeSkill(i)">remove</button>
+          <button appButton type="button" (click)="removeSkill(i)">remove</button>
       </div>
     </div>
   </div>
 
   <div class="button-save-task-container">
     <button 
+      appButton
       [disabled]="taskForm.invalid"
       class="button-save-task" 
       type="submit">

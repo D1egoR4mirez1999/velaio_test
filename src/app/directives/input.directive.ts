@@ -9,7 +9,6 @@ import { NgControl } from '@angular/forms';
     'class': 'input-element',
     '[class.input-invalid]': 'isInvalidControl',
   },
-  
 })
 export class InputDirective {
   ngControl = inject(NgControl, { optional: true, self: true })!;

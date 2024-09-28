@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
 import { InputDirective } from 'src/app/directives/input.directive';
+import { ButtonDirective } from 'src/app/directives/button/button.directive';
 
 @Component({
   selector: 'app-create-task',
@@ -10,6 +11,7 @@ import { InputDirective } from 'src/app/directives/input.directive';
   imports: [
     CommonModule,
     InputDirective,
+    ButtonDirective,
     ReactiveFormsModule,
   ],
   templateUrl: './create-task.component.html',
