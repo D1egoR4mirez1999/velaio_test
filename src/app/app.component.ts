@@ -30,14 +30,14 @@ export class AppComponent {
       personName: ['', [Validators.required, Validators.minLength(5)]],
       personAge: ['', [Validators.required, Validators.min(18)]],
       personSkills: this.formBuilder.array([
-        this.formBuilder.control('', Validators.required),
+        this.formBuilder.control('', [Validators.required, Validators.minLength(1)]),
       ], Validators.required),
     });
   }
 
   addPersonSkill(): void {
     if (this.isLastSkillValid()) {
-      this.personSkills.push(this.formBuilder.control(''));
+      this.personSkills.push(this.formBuilder.control('', [Validators.required, Validators.minLength(1)]));
     }
   }
 
