@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
+import { isPersonInvalid } from 'src/app/helpers/custom-validators';
+
 import { InputDirective } from 'src/app/directives/input/input.directive';
 import { ButtonDirective } from 'src/app/directives/button/button.directive';
 
@@ -37,7 +39,11 @@ export class CreateTaskComponent {
 
   addPersonSkill(): void {
     if (this.isLastSkillValid()) {
-      this.personSkills.push(this.formBuilder.control('', [Validators.required, Validators.minLength(1)]));
+      this.personSkills.push(this.formBuilder.control('', [
+        Validators.required,
+        Validators.minLength(1),
+        isPersonInvalid(this.personSkills),
+      ]));
     }
   }
 

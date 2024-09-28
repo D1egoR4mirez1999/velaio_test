@@ -61,11 +61,6 @@
             class="input-invalid">
             This field must be at least 5 characters long
           </span>
-          <!-- <span 
-            *ngIf="taskForm.get('personName')?.errors?.['validPerson']" 
-            class="input-invalid">
-            Must be a different person
-          </span> -->
         </ng-container>
       </div>
       <div class="form-field">
@@ -116,6 +111,11 @@
                 *ngIf="personSkills.controls[i]?.errors?.['required']" 
                 class="input-invalid">
                 This field is required
+              </span>
+              <span 
+                *ngIf="personSkills.controls[i]?.errors?.['isPersonInvalid']" 
+                class="input-invalid">
+                Must be a different person
               </span>
             </ng-container>
           </div>
