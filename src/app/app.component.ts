@@ -59,7 +59,5 @@ export class AppComponent {
     if (this.taskForm.invalid) {
       return;
     }
-
-    // Do something
   }
 }

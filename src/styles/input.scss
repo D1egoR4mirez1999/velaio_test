@@ -19,6 +19,7 @@ label {
   padding: 10px;
   outline: none;
   box-sizing: border-box;
+  font-family: 'Didact Gothic';
 
   &.input-invalid {
     border: 1px solid var(--red-1);

@@ -26,7 +26,7 @@
         formControlName="taskDeadline" 
         id="taskDeadline" 
         name="taskDeadline" 
-        type="text"
+        type="date"
         >
         <ng-container *ngIf="taskForm.get('taskDeadline')?.invalid && (taskForm.get('taskDeadline')?.dirty || taskForm.get('taskDeadline')?.touched)">
           <span 
