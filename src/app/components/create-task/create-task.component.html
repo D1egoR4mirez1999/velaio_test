@@ -1,0 +1,136 @@
+<form [formGroup]="taskForm" (submit)="saveTask()">
+  <h3>New task</h3>
+  
+  <div class="task-container">
+    <div class="form-field">
+      <label for="taskName">Task's name</label>
+      <input 
+        appInput 
+        formControlName="taskName" 
+        id="taskName" 
+        name="taskName" 
+        type="text"
+        >
+        <ng-container *ngIf="taskForm.get('taskName')?.invalid && (taskForm.get('taskName')?.dirty || taskForm.get('taskName')?.touched)">
+          <span 
+            *ngIf="taskForm.get('taskName')?.errors?.['required']" 
+            class="input-invalid">
+            This field is required
+          </span>
+        </ng-container>
+    </div>
+    <div class="form-field">
+      <label for="taskDeadline">Task's Deadline</label>
+      <input 
+        appInput 
+        formControlName="taskDeadline" 
+        id="taskDeadline" 
+        name="taskDeadline" 
+        type="date"
+        >
+        <ng-container *ngIf="taskForm.get('taskDeadline')?.invalid && (taskForm.get('taskDeadline')?.dirty || taskForm.get('taskDeadline')?.touched)">
+          <span 
+            *ngIf="taskForm.get('taskDeadline')?.errors?.['required']" 
+            class="input-invalid">
+            This field is required
+          </span>
+        </ng-container>
+    </div>
+  </div>
+
+  <h4>Related people</h4>
+  <div class="people-container">
+    <div class="people-fields">
+      <div class="form-field">
+        <label for="personName">Name</label>
+        <input 
+          appInput 
+          formControlName="personName" 
+          id="personName" 
+          name="personName" 
+          type="text"
+          >
+        <ng-container *ngIf="taskForm.get('personName')?.invalid && (taskForm.get('personName')?.dirty || taskForm.get('personName')?.touched)">
+          <span 
+            *ngIf="taskForm.get('personName')?.errors?.['required']" 
+            class="input-invalid">
+            This field is required
+          </span>
+          <span 
+            *ngIf="taskForm.get('personName')?.errors?.['minLength']" 
+            class="input-invalid">
+            This field must be at least 5 characters long
+          </span>
+          <!-- <span 
+            *ngIf="taskForm.get('personName')?.errors?.['validPerson']" 
+            class="input-invalid">
+            Must be a different person
+          </span> -->
+        </ng-container>
+      </div>
+      <div class="form-field">
+        <label for="personAge">Age</label>
+        <input 
+          appInput 
+          formControlName="personAge" 
+          id="personAge" 
+          name="personAge" 
+          type="number"
+          >
+        <ng-container *ngIf="taskForm.get('personAge')?.invalid && (taskForm.get('personAge')?.dirty || taskForm.get('personAge')?.touched)">
+          <span 
+            *ngIf="taskForm.get('personAge')?.errors?.['required']" 
+            class="input-invalid">
+            This field is required
+          </span>
+          <span 
+            *ngIf="taskForm.get('personAge')?.errors?.['min']" 
+            class="input-invalid">
+            Must be greather than 18 years old
+          </span>
+        </ng-container>
+      </div>
+    </div>
+    <div 
+      formArrayName="personSkills"
+      class="skill-container">
+      <div class="skill-header">
+        <h4>Skills</h4>
+        <button type="button" (click)="addPersonSkill()">Add</button>
+      </div>
+
+      <div 
+        *ngFor="let alias of personSkills.controls; let i=index"
+        class="skill-item">
+        <div class="form-field">
+          <input 
+            appInput 
+            formControlName="{{i}}"
+            id="skill-{{i}}" 
+            name="skill-{{i}}" 
+            type="text"
+            >
+
+            <ng-container *ngIf="personSkills.controls[i]?.invalid && (personSkills.controls[i]?.dirty || personSkills.controls[i]?.touched)">
+              <span 
+                *ngIf="personSkills.controls[i]?.errors?.['required']" 
+                class="input-invalid">
+                This field is required
+              </span>
+            </ng-container>
+          </div>
+          
+          <button type="button" (click)="removeSkill(i)">remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-save-task-container">
+    <button 
+      [disabled]="taskForm.invalid"
+      class="button-save-task" 
+      type="submit">
+      Save task
+    </button>
+  </div>
+</form>
