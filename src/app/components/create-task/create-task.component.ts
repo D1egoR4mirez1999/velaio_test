@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
-import { InputDirective } from 'src/app/directives/input.directive';
+import { InputDirective } from 'src/app/directives/input/input.directive';
 import { ButtonDirective } from 'src/app/directives/button/button.directive';
 
 @Component({

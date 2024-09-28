@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { InputDirective } from './directives/input.directive';
+import { InputDirective } from './directives/input/input.directive';
 import { CreateTaskComponent } from './components/create-task/create-task.component';
 
 @Component({
