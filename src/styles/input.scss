@@ -1,0 +1,30 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  .input-invalid {
+    color: var(--red-1);
+  }
+}
+
+label {
+  font-size: 16px;
+  color: var(--dark-1);
+}
+
+.input-element {
+  height: 32px;
+  border: 1px solid var(--gray-1);
+  border-radius: 4px;
+  padding: 10px;
+  outline: none;
+  box-sizing: border-box;
+
+  &.input-invalid {
+    border: 1px solid var(--red-1);
+  }
+
+  &:focus {
+    border: 1px solid;
+  }
+}
