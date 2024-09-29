@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="list-tasks-container">
-    <ng-container *ngFor="let task of tasksForShowing; let i=index;">
+    <ng-container *ngFor="let task of (tasks$ | async); let i=index;">
       <div class="card-item">
         <div class="header-card">
           <h4>{{task.taskName}} - {{task.taskDeadline}}</h4>
