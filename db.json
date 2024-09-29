@@ -49,6 +49,21 @@
       ],
       "isComplete": false,
       "id": 2
+    },
+    {
+      "taskName": "task 3",
+      "taskDeadline": "2024-09-29",
+      "people": [
+        {
+          "personName": "person 1",
+          "personAge": 20,
+          "personSkills": [
+            "a"
+          ]
+        }
+      ],
+      "isComplete": false,
+      "id": 3
     }
   ]
 }

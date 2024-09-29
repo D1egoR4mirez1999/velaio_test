@@ -1,13 +1,39 @@
+:host {
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .list {
   height: 100%;
   padding-bottom: 48px;
   box-sizing: border-box;
   overflow: auto;
+
+  @media only screen and (min-width: 1024px) {
+    min-width: 900px;
+    max-width: 900px;
+  }
 }
 
 .filters-container {
   padding-bottom: 16px;
   border-bottom: 1px solid var(--gray-1);
+
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: flex-start;
+
+    h3 {
+      margin-right: 16px;
+    }
+
+    .filters-container-buttons {
+      width: 50%;
+    }
+  }
 
   h3 {
     text-align: center;
@@ -31,6 +57,36 @@
 
 .list-tasks-container {
   padding-top: 16px;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .card-item {
+      width: 350px;
+      margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .card-item {
+      width: 350px;
+      margin-right: 16px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+    }
+  }
 
   .card-item {
     background-color: var(--gray-1);
