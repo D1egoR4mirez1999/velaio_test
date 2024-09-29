@@ -1,28 +1,30 @@
 <h3>List tasks</h3>
 
 <div class="filters-container">
-    <h3>Filters</h3>
-    <div class="filters-container-buttons">
-        <button appButton type="button">Completes</button>
-        <button appButton type="button">Pending</button>
-    </div>
+  <h3>Filters</h3>
+  <div class="filters-container-buttons">
+    <button appButton type="button">Completes</button>
+    <button appButton type="button">Pending</button>
+  </div>
 </div>
 <div class="list-tasks-container">
+  <ng-container *ngFor="let task of tasks; let i=index;">
     <div class="card-item">
-        <div class="header-card">
-            <h4>Task - 2024-10-01</h4>
-            <button appButton type="button">complete</button>
+      <div class="header-card">
+        <h4>{{task.taskName}} - {{task.taskDeadline}}</h4>
+        <button appButton type="button">complete</button>
+      </div>
+  
+      <span>Related people</span>
+      <div class="person">
+        <div class="name">Name</div>
+        <div class="age">Age</div>
+        <div class="skills-title">Skills</div>
+        <div class="skills-box">
+          <div class="skill">A</div>
+          <div class="skill">B</div>
         </div>
-
-        <span>Related people</span>
-        <div class="person">
-            <div class="name">Name</div>
-            <div class="age">Age</div>
-            <div class="skills-title">Skills</div>
-            <div class="skills-box">
-                <div class="skill">A</div>
-                <div class="skill">B</div>
-            </div>
-        </div>
+      </div>
     </div>
+  </ng-container>
 </div>

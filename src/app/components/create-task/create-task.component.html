@@ -39,90 +39,101 @@
   </div>
 
   <h4>Related people</h4>
-  <div class="people-container">
-    <div class="people-fields">
-      <div class="form-field">
-        <label for="personName">Name</label>
-        <input 
-          appInput 
-          formControlName="personName" 
-          id="personName" 
-          name="personName" 
-          type="text"
-          >
-        <ng-container *ngIf="taskForm.get('personName')?.invalid && (taskForm.get('personName')?.dirty || taskForm.get('personName')?.touched)">
-          <span 
-            *ngIf="taskForm.get('personName')?.errors?.['required']" 
-            class="input-invalid">
-            This field is required
-          </span>
-          <span 
-            *ngIf="taskForm.get('personName')?.errors?.['minLength']" 
-            class="input-invalid">
-            This field must be at least 5 characters long
-          </span>
-        </ng-container>
-      </div>
-      <div class="form-field">
-        <label for="personAge">Age</label>
-        <input 
-          appInput 
-          formControlName="personAge" 
-          id="personAge" 
-          name="personAge" 
-          type="number"
-          >
-        <ng-container *ngIf="taskForm.get('personAge')?.invalid && (taskForm.get('personAge')?.dirty || taskForm.get('personAge')?.touched)">
-          <span 
-            *ngIf="taskForm.get('personAge')?.errors?.['required']" 
-            class="input-invalid">
-            This field is required
-          </span>
-          <span 
-            *ngIf="taskForm.get('personAge')?.errors?.['min']" 
-            class="input-invalid">
-            Must be greather than 18 years old
-          </span>
-        </ng-container>
-      </div>
-    </div>
-    <div 
-      formArrayName="personSkills"
-      class="skill-container">
-      <div class="skill-header">
-        <h4>Skills</h4>
-        <button appButton type="button" (click)="addPersonSkill()">Add</button>
-      </div>
-
-      <div 
-        *ngFor="let alias of personSkills.controls; let i=index"
-        class="skill-item">
-        <div class="form-field">
-          <input 
-            appInput 
-            formControlName="{{i}}"
-            id="skill-{{i}}" 
-            name="skill-{{i}}" 
-            type="text"
-            >
-
-            <ng-container *ngIf="personSkills.controls[i]?.invalid && (personSkills.controls[i]?.dirty || personSkills.controls[i]?.touched)">
-              <span 
-                *ngIf="personSkills.controls[i]?.errors?.['required']" 
-                class="input-invalid">
-                This field is required
-              </span>
-              <span 
-                *ngIf="personSkills.controls[i]?.errors?.['isPersonInvalid']" 
-                class="input-invalid">
-                Must be a different person
-              </span>
-            </ng-container>
+  <div class="people-buttons">
+    <button appButton type="button" (click)="addPerson()">Add</button>
+    <button appButton type="button" (click)="removePerson()">Remove</button>
+  </div>
+  
+  <div formArrayName="people">
+    <ng-container *ngFor="let person of people.controls; let i=index">
+      <ng-container [formGroup]="person">
+        <div class="people-item">
+          <div class="people-fields">
+            <div class="form-field">
+              <label for="personName">Name</label>
+              <input 
+                appInput 
+                formControlName="personName" 
+                id="personName" 
+                name="personName" 
+                type="text"
+                >
+              <ng-container *ngIf="person.get('personName')?.invalid && (person.get('personName')?.dirty || person.get('personName')?.touched)">
+                <span 
+                  *ngIf="person.get('personName')?.errors?.['required']" 
+                  class="input-invalid">
+                  This field is required
+                </span>
+                <span 
+                  *ngIf="person.get('personName')?.errors?.['minLength']" 
+                  class="input-invalid">
+                  This field must be at least 5 characters long
+                </span>
+              </ng-container>
+            </div>
+            <div class="form-field">
+              <label for="personAge">Age</label>
+              <input 
+                appInput 
+                formControlName="personAge" 
+                id="personAge" 
+                name="personAge" 
+                type="number"
+                >
+              <ng-container *ngIf="person.get('personAge')?.invalid && (person.get('personAge')?.dirty || person.get('personAge')?.touched)">
+                <span 
+                  *ngIf="person.get('personAge')?.errors?.['required']" 
+                  class="input-invalid">
+                  This field is required
+                </span>
+                <span 
+                  *ngIf="person.get('personAge')?.errors?.['min']" 
+                  class="input-invalid">
+                  Must be greather than 18 years old
+                </span>
+              </ng-container>
+            </div>
           </div>
-          
-          <button appButton type="button" (click)="removeSkill(i)">remove</button>
-      </div>
-    </div>
+          <div 
+            formArrayName="personSkills"
+            class="skill-container">
+            <div class="skill-header">
+              <h4>Skills</h4>
+              <button appButton type="button" (click)="addPersonSkill(person)">Add</button>
+            </div>
+      
+            <div 
+              *ngFor="let skill of getPersonSkills(person).controls; let i=index"
+              class="skill-item">
+              <div class="form-field">
+                <input 
+                  appInput 
+                  formControlName="{{i}}"
+                  id="skill-{{i}}" 
+                  name="skill-{{i}}" 
+                  type="text"
+                  >
+      
+                  <ng-container *ngIf="getPersonSkills(person).controls[i]?.invalid && (getPersonSkills(person).controls[i]?.dirty || getPersonSkills(person).controls[i]?.touched)">
+                    <span 
+                      *ngIf="getPersonSkills(person).controls[i]?.errors?.['required']" 
+                      class="input-invalid">
+                      This field is required
+                    </span>
+                    <span 
+                      *ngIf="getPersonSkills(person).controls[i]?.errors?.['isPersonInvalid']" 
+                      class="input-invalid">
+                      Must be a different person
+                    </span>
+                  </ng-container>
+                </div>
+                
+                <button appButton type="button" (click)="removeSkill(person, i)">remove</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
 
   <div class="button-save-task-container">

@@ -2,47 +2,97 @@
   "tasks": [
     {
       "taskName": "asdfasdf",
-      "taskDeadline": "2024-10-02",
-      "personName": "asdfasdf",
-      "personAge": 179,
-      "personSkills": [
-        "a",
-        "b"
+      "taskDeadline": "2024-10-06",
+      "people": [
+        {
+          "personName": "asdfasdf",
+          "personAge": 18,
+          "personSkills": [
+            "a"
+          ]
+        },
+        {
+          "personName": "asdfasdf",
+          "personAge": 18,
+          "personSkills": [
+            "asdf"
+          ]
+        },
+        {
+          "personName": "12341234",
+          "personAge": 67,
+          "personSkills": [
+            "asdfasdf"
+          ]
+        }
       ],
+      "isComplete": false,
       "id": 1
     },
     {
-      "taskName": "asdf",
-      "taskDeadline": "2024-09-14",
-      "personName": "asdfasdf",
-      "personAge": 156,
-      "personSkills": [
-        "a",
-        "v"
+      "taskName": "asdfasdf",
+      "taskDeadline": "2024-09-22",
+      "people": [
+        {
+          "personName": "asdfasdf",
+          "personAge": 18,
+          "personSkills": [
+            "asdf"
+          ]
+        },
+        {
+          "personName": "asdfasdf",
+          "personAge": 18,
+          "personSkills": [
+            "sadf"
+          ]
+        }
       ],
+      "isComplete": false,
       "id": 2
     },
     {
-      "taskName": "cvbn",
-      "taskDeadline": "2024-09-29",
-      "personName": "zxcvxzcv",
-      "personAge": 66,
-      "personSkills": [
-        "a",
-        "b"
+      "taskName": "asdfasdf",
+      "taskDeadline": "2024-10-06",
+      "people": [
+        {
+          "personName": "asdfasdf",
+          "personAge": 123132,
+          "personSkills": [
+            "1"
+          ]
+        },
+        {
+          "personName": "asdfsadf",
+          "personAge": 178,
+          "personSkills": [
+            "a"
+          ]
+        }
       ],
+      "isComplete": false,
       "id": 3
     },
     {
-      "taskName": "asdfasd",
+      "taskName": "asdfasdf",
       "taskDeadline": "2024-09-29",
-      "personName": "sadfsadf",
-      "personAge": 78,
-      "personSkills": [
-        "a",
-        "b",
-        "c"
+      "people": [
+        {
+          "personName": "aasdfasdf",
+          "personAge": 123,
+          "personSkills": [
+            "asdf"
+          ]
+        },
+        {
+          "personName": "asdfasfd",
+          "personAge": 124,
+          "personSkills": [
+            "a"
+          ]
+        }
       ],
+      "isComplete": false,
       "id": 4
     }
   ]

@@ -17,9 +17,18 @@ form {
   }
 
   .task-container,
-  .people-container {
+  .people-item {
     display: flex;
     flex-direction: column;
+    background-color: var(--gray-1);
+    border-radius: 6px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
 
     @media only screen and (min-width: 768px) {
       display: flex;
@@ -39,43 +48,61 @@ form {
     }
   }
 
-  .people-container {
+  .people-buttons {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
 
-    .people-fields {
-      display: flex;
-      flex-direction: column;
+    button {
+      flex: 1;
+      margin-right: 16px;
 
-      @media only screen and (min-width: 768px) {
-        flex-direction: row;
+      &:last-child {
+        margin-right: 0px;
       }
     }
+  }
 
-    .skill-container {
-      .skill-header {
+  > div {
+    .people-item {
+      display: flex;
+      flex-direction: column;
+  
+      .people-fields {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        button {
-          min-width: 40%;
+        flex-direction: column;
+  
+        @media only screen and (min-width: 768px) {
+          flex-direction: row;
         }
       }
-
-      .skill-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 8px;
-
-        .form-field {
-          flex: 1;
-          margin-right: 16px;
+  
+      .skill-container {
+        .skill-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+  
+          button {
+            min-width: 40%;
+          }
         }
-
-        &:last-child {
-          margin-bottom: 0px;
+  
+        .skill-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 8px;
+  
+          .form-field {
+            flex: 1;
+            margin-right: 16px;
+          }
+  
+          &:last-child {
+            margin-bottom: 0px;
+          }
         }
       }
     }
