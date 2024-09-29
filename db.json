@@ -1,12 +1,12 @@
 {
   "tasks": [
     {
-      "taskName": "task1",
-      "taskDeadline": "2024-09-28",
+      "taskName": "task 1",
+      "taskDeadline": "2024-09-29",
       "people": [
         {
           "personName": "person 1",
-          "personAge": 123,
+          "personAge": 18,
           "personSkills": [
             "a",
             "b"
@@ -21,71 +21,23 @@
           ]
         }
       ],
-      "isComplete": true,
+      "isComplete": false,
       "id": 1
     },
     {
-      "taskName": "task2",
-      "taskDeadline": "2024-09-29",
+      "taskName": "task 2",
+      "taskDeadline": "2024-09-28",
       "people": [
         {
           "personName": "person 1",
-          "personAge": 44,
+          "personAge": 20,
           "personSkills": [
-            "a",
-            "b",
-            "c"
-          ]
-        },
-        {
-          "personName": "person 2",
-          "personAge": 23,
-          "personSkills": [
-            "a",
-            "b",
-            "c"
+            "a"
           ]
         }
       ],
       "isComplete": true,
       "id": 2
-    },
-    {
-      "taskName": "task 3",
-      "taskDeadline": "2024-09-29",
-      "people": [
-        {
-          "personName": "person 1",
-          "personAge": 20,
-          "personSkills": [
-            "a"
-          ]
-        }
-      ],
-      "isComplete": true,
-      "id": 3
-    },
-    {
-      "taskName": "task 3",
-      "taskDeadline": "2024-10-06",
-      "people": [
-        {
-          "personName": "test 1",
-          "personAge": 20,
-          "personSkills": [
-            "a"
-          ]
-        },
-        {
-          "personName": "person 2",
-          "personAge": 20,
-          "personSkills": [
-            "a"
-          ]
-        }
-      ],
-      "isComplete": false,
-      "id": 4
     }
   ]
 }
