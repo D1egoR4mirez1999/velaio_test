@@ -1,0 +1,55 @@
+.filters-container {
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-1);
+
+  h3 {
+    text-align: center;
+  }
+
+  .filters-container-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      flex: 1;
+      margin-right: 16px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
+}
+
+.list-tasks-container {
+  padding-top: 16px;
+
+  .card-item {
+    background-color: var(--gray-1);
+    border-radius: 6px;
+    padding: 8px;
+    box-sizing: border-box;
+
+    .header-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .person {
+      .skills-box {
+        display: flex;
+        flex-direction: column;
+        .skill {
+          padding-left: 16px;
+        }
+      }
+    }
+  }
+}
