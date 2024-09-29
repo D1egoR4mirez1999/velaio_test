@@ -22,7 +22,7 @@ import { Task } from 'src/app/services/task/interface/task.interface';
 export class ListTasksComponent implements OnInit {
   tasks: Task[] = [];
   tasksForShowing: Task[] = [];
-  
+
   constructor(
     private taskService: TaskService,
     private router: Router,
@@ -55,5 +55,14 @@ export class ListTasksComponent implements OnInit {
 
   resetFilters(): void {
     this.tasksForShowing = this.tasks;
+  }
+
+  completeTask(task: Task): void {
+    const taskData = { ...task, isComplete: true };
+    this.taskService.completeTask(taskData).subscribe({
+      next: () => {
+        this.getTasks();
+      }
+    });
   }
 }

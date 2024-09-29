@@ -14,7 +14,19 @@
       <div class="card-item">
         <div class="header-card">
           <h4>{{task.taskName}} - {{task.taskDeadline}}</h4>
-          <button appButton type="button">complete</button>
+          <button 
+            *ngIf="!task.isComplete" 
+            appButton 
+            type="button" 
+            (click)="completeTask(task)">
+            Complete
+          </button>
+          <button 
+            *ngIf="task.isComplete" 
+            appButton 
+            disabled>
+            Completed
+          </button>
         </div>
     
         <span>Related people</span>

@@ -21,7 +21,7 @@
           ]
         }
       ],
-      "isComplete": false,
+      "isComplete": true,
       "id": 1
     },
     {
@@ -62,8 +62,30 @@
           ]
         }
       ],
-      "isComplete": false,
+      "isComplete": true,
       "id": 3
+    },
+    {
+      "taskName": "task 3",
+      "taskDeadline": "2024-10-06",
+      "people": [
+        {
+          "personName": "test 1",
+          "personAge": 20,
+          "personSkills": [
+            "a"
+          ]
+        },
+        {
+          "personName": "person 2",
+          "personAge": 20,
+          "personSkills": [
+            "a"
+          ]
+        }
+      ],
+      "isComplete": false,
+      "id": 4
     }
   ]
 }

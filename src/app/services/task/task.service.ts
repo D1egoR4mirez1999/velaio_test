@@ -19,4 +19,8 @@ export class TaskService {
   saveTask(task: Task): Observable<Task> {
     return this.http.post<Task>(`${this.URL}tasks`, task);
   }
+
+  completeTask(task: Task) {
+    return this.http.put<Task>(`${this.URL}tasks/${task.id}`, task);
+  }
 }
