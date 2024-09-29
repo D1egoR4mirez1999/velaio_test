@@ -1,30 +1,45 @@
-<h3>List tasks</h3>
-
-<div class="filters-container">
-  <h3>Filters</h3>
-  <div class="filters-container-buttons">
-    <button appButton type="button">Completes</button>
-    <button appButton type="button">Pending</button>
-  </div>
-</div>
-<div class="list-tasks-container">
-  <ng-container *ngFor="let task of tasks; let i=index;">
-    <div class="card-item">
-      <div class="header-card">
-        <h4>{{task.taskName}} - {{task.taskDeadline}}</h4>
-        <button appButton type="button">complete</button>
-      </div>
+<div class="list">
+  <h3>List tasks</h3>
   
-      <span>Related people</span>
-      <div class="person">
-        <div class="name">Name</div>
-        <div class="age">Age</div>
-        <div class="skills-title">Skills</div>
-        <div class="skills-box">
-          <div class="skill">A</div>
-          <div class="skill">B</div>
-        </div>
-      </div>
+  <div class="filters-container">
+    <h3>Filters</h3>
+    <div class="filters-container-buttons">
+      <button appButton type="button" (click)="filterByCompletes()">Completes</button>
+      <button appButton type="button" (click)="filterByPending()">Pending</button>
+      <button appButton type="button"(click)="resetFilters()">Reset</button>
     </div>
-  </ng-container>
+  </div>
+  <div class="list-tasks-container">
+    <ng-container *ngFor="let task of tasksForShowing; let i=index;">
+      <div class="card-item">
+        <div class="header-card">
+          <h4>{{task.taskName}} - {{task.taskDeadline}}</h4>
+          <button appButton type="button">complete</button>
+        </div>
+    
+        <span>Related people</span>
+        <ng-container *ngFor="let person of task.people; let i=index;">
+          <div class="person">
+            <div class="name">{{person.personName}}</div>
+            <div class="age">{{person.personAge}}</div>
+            <div class="skills-title">Skills</div>
+            <div class="skills-box">
+              <ng-container *ngFor="let skill of person.personSkills; let i=index;">
+                <div class="skill">{{skill}}</div>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  
+  <div class="button-create-task-container">
+    <button 
+      appButton
+      class="button-save-task"
+      (click)="goToCreateTask()">
+      Create task
+    </button>
+  </div>
 </div>

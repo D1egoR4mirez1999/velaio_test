@@ -1,3 +1,10 @@
+.list {
+  height: 100%;
+  padding-bottom: 48px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
 .filters-container {
   padding-bottom: 16px;
   border-bottom: 1px solid var(--gray-1);
@@ -30,6 +37,11 @@
     border-radius: 6px;
     padding: 8px;
     box-sizing: border-box;
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
 
     .header-card {
       display: flex;
@@ -43,13 +55,38 @@
     }
 
     .person {
+      .name {
+        font-weight: bold;
+      }
+
       .skills-box {
         display: flex;
         flex-direction: column;
+
         .skill {
           padding-left: 16px;
         }
       }
     }
+  }
+}
+
+.button-create-task-container {
+  background-color: var(--white);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+
+  @media only screen and (min-width: 1024px) {
+    position: relative;
+    padding: 0px;
+    margin-top: 16px;
+  }
+
+  .button-save-task {
+    width: 100%;
   }
 }

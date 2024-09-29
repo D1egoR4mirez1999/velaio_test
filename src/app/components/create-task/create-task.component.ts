@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 
@@ -8,6 +8,7 @@ import { InputDirective } from 'src/app/directives/input/input.directive';
 import { ButtonDirective } from 'src/app/directives/button/button.directive';
 
 import { TaskService } from 'src/app/services/task/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-task',
@@ -31,6 +32,7 @@ export class CreateTaskComponent {
   constructor(
     private formBuilder: FormBuilder,
     private taskService: TaskService,
+    private router: Router,
   ) {
     this.taskForm = this.taskFormGroup();
   }
@@ -54,6 +56,10 @@ export class CreateTaskComponent {
         this.formBuilder.control('', [Validators.required, Validators.minLength(1)]),
       ], Validators.required),
     })
+  }
+
+  goToLists(): void {
+    this.router.navigate(['list-tasks']);
   }
 
   addPerson(): void {
@@ -116,7 +122,16 @@ export class CreateTaskComponent {
     this.taskService.saveTask(this.taskForm.value).subscribe({
       next: (resp) => {
         this.taskForm.reset(this.taskFormGroup());
+        this.resetPeopleArray();
       }
     });
+  }
+
+  private resetPeopleArray(): void {
+    for (let index = 0; index < this.people.controls.length - 1; index++) {
+      if (this.people.controls.length > 1) {
+        this.people.removeAt(index)
+      }
+    }
   }
 }

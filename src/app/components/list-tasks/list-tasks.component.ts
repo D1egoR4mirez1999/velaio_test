@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { ButtonDirective } from 'src/app/directives/button/button.directive';
 import { TaskService } from 'src/app/services/task/task.service';
@@ -20,8 +21,12 @@ import { Task } from 'src/app/services/task/interface/task.interface';
 })
 export class ListTasksComponent implements OnInit {
   tasks: Task[] = [];
+  tasksForShowing: Task[] = [];
   
-  constructor(private taskService: TaskService) { }
+  constructor(
+    private taskService: TaskService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.getTasks();
@@ -29,7 +34,26 @@ export class ListTasksComponent implements OnInit {
 
   private getTasks(): void {
     this.taskService.getTasks().subscribe({
-      next: (tasks) => this.tasks = tasks,
+      next: (tasks) => {
+        this.tasks = tasks;
+        this.tasksForShowing = tasks;
+      }
     });
+  }
+
+  goToCreateTask(): void {
+    this.router.navigate(['create-task']);
+  }
+
+  filterByCompletes(): void {
+    this.tasksForShowing = this.tasks.filter((task) => task.isComplete);
+  }
+
+  filterByPending(): void {
+    this.tasksForShowing = this.tasks.filter((task) => !task.isComplete);
+  }
+
+  resetFilters(): void {
+    this.tasksForShowing = this.tasks;
   }
 }
