@@ -7,6 +7,8 @@ import { isPersonInvalid } from 'src/app/helpers/custom-validators';
 import { InputDirective } from 'src/app/directives/input/input.directive';
 import { ButtonDirective } from 'src/app/directives/button/button.directive';
 
+import { TaskService } from 'src/app/services/task/task.service';
+
 @Component({
   selector: 'app-create-task',
   standalone: true,
@@ -16,6 +18,7 @@ import { ButtonDirective } from 'src/app/directives/button/button.directive';
     ButtonDirective,
     ReactiveFormsModule,
   ],
+  providers: [TaskService],
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss']
 })
@@ -25,7 +28,10 @@ export class CreateTaskComponent {
     return this.taskForm.get('personSkills') as FormArray;
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private taskService: TaskService,
+  ) {
     this.taskForm = this.formBuilder.group({
       taskName: ['', Validators.required],
       taskDeadline: ['', Validators.required],
@@ -65,5 +71,11 @@ export class CreateTaskComponent {
     if (this.taskForm.invalid) {
       return;
     }
+
+    this.taskService.saveTask(this.taskForm.value).subscribe({
+      next: (resp) => {
+        this.taskForm.reset();
+      }
+    });
   }
 }
