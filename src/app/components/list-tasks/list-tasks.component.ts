@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store';
@@ -8,7 +8,7 @@ import { TaskService } from 'src/app/services/task/task.service';
 import { Task } from 'src/app/services/task/interface/task.interface';
 import { State } from './state/state';
 import { getTasks } from './state/actions';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-tasks',
@@ -24,10 +24,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   templateUrl: './list-tasks.component.html',
   styleUrls: ['./list-tasks.component.scss']
 })
-export class ListTasksComponent implements OnInit {
+export class ListTasksComponent implements OnInit, OnDestroy {
   private allTasks: Task[] = [];
   private filteredTasksSubject = new BehaviorSubject<Task[]>([]);
   tasks$ = this.filteredTasksSubject.asObservable();
+  private subscription = new Subscription;
 
   constructor(
     private taskService: TaskService,
@@ -35,16 +36,23 @@ export class ListTasksComponent implements OnInit {
     private store: Store<State>,
   ) { }
 
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
   ngOnInit(): void {
     this.getTasks();
   }
 
   private getTasks(): void {
     this.store.dispatch(getTasks());
-    this.store.select('tasks').subscribe(tasks => {
-      this.allTasks = tasks;
-      this.filteredTasksSubject.next(tasks);
-    });
+
+    this.subscription.add(
+      this.store.select('tasks').subscribe(tasks => {
+        this.allTasks = tasks;
+        this.filteredTasksSubject.next(tasks);
+      })
+    );
   }
 
   goToCreateTask(): void {
