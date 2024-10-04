@@ -105,8 +105,40 @@ describe('CreateTaskComponent', () => {
     component.addPerson();
 
     expect(component.people.length).toEqual(1);
-    expect(component.people.at(0).get('personAge')?.errors).toEqual({ 
-      min: { min: 18, actual: 15 } 
+    expect(component.people.at(0).get('personAge')?.errors).toEqual({
+      min: { min: 18, actual: 15 }
     });
+  });
+
+  it('Should call removePerson method when click on button btnRemovePerson', () => {
+    const btnRemovePerson = fixture.debugElement.nativeElement.querySelector('#btnRemovePerson') as HTMLButtonElement;
+    const spy = spyOn(component, 'removePerson');
+
+    btnRemovePerson.click();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('Should remove a person if people array length is greater than 1', () => {
+    component.people.at(0).patchValue({
+      personName: 'person 1',
+      personAge: 25,
+      personSkills: ['skill 1'],
+    });
+    component.addPerson();
+    component.people.at(1).patchValue({
+      personName: 'person 2',
+      personAge: 30,
+      personSkills: ['skill 1'],
+    });
+    component.removePerson();
+
+    expect(component.people.length).toEqual(1);
+  });
+
+  it('Should not remove a person when people array length is equal to 1', () => {
+    component.removePerson();
+
+    expect(component.people.length).toEqual(1);
   });
 });
