@@ -115,7 +115,13 @@
             class="skill-container">
             <div class="skill-header">
               <h4>Skills</h4>
-              <button appButton type="button" (click)="addPersonSkill(person)">Add</button>
+              <button 
+                id="btnAddSkill"
+                appButton 
+                type="button"
+                (click)="addSkill(person)">
+                Add
+              </button>
             </div>
       
             <div 

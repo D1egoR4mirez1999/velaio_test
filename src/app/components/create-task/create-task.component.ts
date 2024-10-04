@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 import { isPersonInvalid } from 'src/app/helpers/custom-validators';
 
@@ -86,9 +86,8 @@ export class CreateTaskComponent {
     return person.get('personSkills') as FormArray;
   }
 
-  addPersonSkill(person: FormGroup): void {
-    const skills = person.get('personSkills') as FormArray;
-
+  addSkill(person: FormGroup): void {
+    const skills = person.get('personSkills') as FormArray<FormControl>;
     if (this.isLastSkillValid(skills)) {
       skills.push(this.formBuilder.control('', [
         Validators.required,
@@ -99,7 +98,7 @@ export class CreateTaskComponent {
   }
 
   private isLastSkillValid(skills: FormArray): boolean {
-    return !!skills.controls[skills.length - 1].value;
+    return skills.at(skills.length - 1).valid;
   }
 
   removeSkill(person: FormGroup, i: number): void {

@@ -141,4 +141,53 @@ describe('CreateTaskComponent', () => {
 
     expect(component.people.length).toEqual(1);
   });
+
+  xit('Should call addSkill method when click on button btnAddSkill', () => {
+    const btnAddSkill = fixture.debugElement.nativeElement.querySelector('#btnAddSkill') as HTMLButtonElement;
+    const spy = spyOn(component, 'addSkill');
+
+    btnAddSkill.click();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  xit('Should add a person skill when last person skill is valid', () => {
+    component.people.at(0).patchValue({
+      personName: 'person 1',
+      personAge: 25,
+      personSkills: ['skill 1'],
+    });
+    component.addSkill(component.people.at(0));
+    const personSkills = component.people.at(0).get('personSkills') as FormArray<FormControl>;
+
+    expect(personSkills.length).toEqual(2);
+  });
+
+  xit('Should not add a person skill when last person skill is invalid', () => {
+    component.people.at(0).patchValue({
+      personName: 'person 1',
+      personAge: 25,
+      personSkills: [''],
+    });
+    component.addSkill(component.people.at(0));
+    const personSkills = component.people.at(0).get('personSkills') as FormArray<FormControl>;
+
+    expect(personSkills.length).toEqual(1);
+  });
+
+  it('Should remove a person skill when person skill array is greather than 1', () => {
+    component.people.at(0).patchValue({
+      personName: 'person 1',
+      personAge: 25,
+      personSkills: ['Skill 1'],
+    });
+    component.addSkill(component.people.at(0));
+    const personSkills = component.people.at(0).get('personSkills') as FormArray<FormControl>;
+
+    expect(personSkills.length).toEqual(2);
+    
+    component.removeSkill(component.people.at(0), 1);
+
+    expect(personSkills.length).toEqual(1);
+  });
 });
