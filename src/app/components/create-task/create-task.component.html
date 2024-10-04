@@ -44,8 +44,20 @@
 
   <h4>Related people</h4>
   <div class="people-buttons">
-    <button appButton type="button" (click)="addPerson()">Add</button>
-    <button appButton type="button" (click)="removePerson()">Remove</button>
+    <button
+      id="btnAddPerson"
+      appButton 
+      type="button" 
+      (click)="addPerson()">
+      Add
+    </button>
+    <button 
+      id="btnRemovePerson"
+      appButton 
+      type="button" 
+      (click)="removePerson()">
+      Remove
+    </button>
   </div>
   
   <div formArrayName="people">
