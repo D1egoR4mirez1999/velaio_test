@@ -119,7 +119,7 @@ export class CreateTaskComponent {
     }
 
     this.taskService.saveTask(this.taskForm.value).subscribe({
-      next: (resp) => {
+      next: () => {
         this.taskForm.reset(this.taskFormGroup());
         this.resetPeopleArray();
       }

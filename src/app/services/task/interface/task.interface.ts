@@ -3,7 +3,7 @@ export interface Task {
   taskDeadline: string
   isComplete: boolean
   people: People[]
-  id: number
+  id?: number
 }
 
 export interface People {
